@@ -37,14 +37,14 @@ For example, to stop nginx processes with waiting for the worker processes to fi
 
 ### 2. Create the SSL self-signed sertificate
 
-``` bash
 #create the certificate
-openssl req -x509 -newkey rsa:2048 -keyout key.pem -out cert.pem -days 500
+
+  openssl req -x509 -newkey rsa:2048 -keyout key.pem -out cert.pem -days 500
 
 #check the certificate
-openssl x509 -in cert.pem -text -noout
 
-```
+  openssl x509 -in cert.pem -text -noout
+
 
 ### 3. Configuration
 
