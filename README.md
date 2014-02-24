@@ -34,22 +34,23 @@ Where signal may be one of the following:
 
 For example, to stop nginx processes with waiting for the worker processes to finish serving current requests, the following command can be executed:
 
-```
+``` bash
 	nginx -s quit
 ```
 
-### 2. Create the SSL self-signed sertificate
+### 2. Create the SSL self-signed certificate
 
-#create the certificate
+Create the certificate
 
-```
+``` bash
   openssl req -x509 -newkey rsa:2048 -keyout key.pem -out cert.pem -days 500
 ```
 
-#check the certificate
+Verify the certificate
 
+``` bash
   openssl x509 -in cert.pem -text -noout
-
+```
 
 ### 3. Configuration
 
@@ -59,22 +60,26 @@ For example, to stop nginx processes with waiting for the worker processes to fi
 
 To verify that the HTTP site is working
 
-```
+``` bash
   curl http://localhost:8080
 ```
 
 The following verifies the SSL passthrough.
 
-```
+``` bash
   curl https://localhost --insecure
 ```
 
 # Troubleshooting
 
-nginx-ssl
-	sudo nginx -s stop && sudo nginx
+## Mac and Unices
+
+``` bash
+sudo nginx -s stop && sudo nginx
 	
-	cat /usr/local/var/run/nginx.pid
+cat /usr/local/var/run/nginx.pid
+
+```
 
 ## Windows
 
@@ -88,7 +93,10 @@ If this error occurs
 
 then remove the passphrase from the certificate, as nginx on windows has an issue with this.
 
+``` bash
   #backup key with password
   cp key.pem key.orig.pem
   openssl rsa -in key.pem -out new.pem
   cat new.pem > key.pem
+  
+```
