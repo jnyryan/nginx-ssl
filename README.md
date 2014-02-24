@@ -7,7 +7,7 @@ This application serves up two different web sites on ports 8080 and 8081, both 
 
 ## 1. Setup
 
-Install xginx
+Install nginx
 
 - [install info](http://nginx.org/en/docs/install.html)
 - [Windows instructions](http://nginx.org/en/docs/windows.html)
