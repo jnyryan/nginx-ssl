@@ -8,6 +8,7 @@ This application serves up two different web sites on ports 8080 and 8081, both 
 ## 1. Setup
 
 Install xginx [install info](http://nginx.org/en/docs/install.html)
+[Windows instructions](http://nginx.org/en/docs/windows.html)
 
 The way nginx and its modules work is determined in the configuration file. By default, the configuration file is named ***nginx.conf*** and placed in one of 
 - /usr/local/nginx/conf
@@ -33,13 +34,17 @@ Where signal may be one of the following:
 
 For example, to stop nginx processes with waiting for the worker processes to finish serving current requests, the following command can be executed:
 
+```
 	nginx -s quit
+```
 
 ### 2. Create the SSL self-signed sertificate
 
 #create the certificate
 
+```
   openssl req -x509 -newkey rsa:2048 -keyout key.pem -out cert.pem -days 500
+```
 
 #check the certificate
 
@@ -54,11 +59,15 @@ For example, to stop nginx processes with waiting for the worker processes to fi
 
 To verify that the HTTP site is working
 
+```
   curl http://localhost:8080
+```
 
 The following verifies the SSL passthrough.
 
+```
   curl https://localhost --insecure
+```
 
 # Troubleshooting
 
@@ -67,3 +76,19 @@ nginx-ssl
 	
 	cat /usr/local/var/run/nginx.pid
 
+## Windows
+
+Chek if nginx is running
+
+    tasklist /fi "imagename eq nginx.exe"
+
+If this error occurs
+
+    the event "ngx_master_13720" was not signaled for 5s
+
+then remove the passphrase from the certificate, as nginx on windows has an issue with this.
+
+  #backup key with password
+  cp key.pem key.orig.pem
+  openssl rsa -in key.pem -out new.pem
+  cat new.pem > key.pem
