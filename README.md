@@ -8,8 +8,9 @@ This application serves up two different web sites on ports 8080 and 8081, both 
 ## 1. Setup
 
 Install xginx
- -[install info](http://nginx.org/en/docs/install.html)
- -[Windows instructions](http://nginx.org/en/docs/windows.html)
+
+- [install info](http://nginx.org/en/docs/install.html)
+- [Windows instructions](http://nginx.org/en/docs/windows.html)
 
 The way nginx and its modules work is determined in the configuration file. By default, the configuration file is named ***nginx.conf*** and placed in one of 
 - /usr/local/nginx/conf
