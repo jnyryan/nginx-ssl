@@ -66,3 +66,4 @@ nginx-ssl
 	sudo nginx -s stop && sudo nginx
 	
 	cat /usr/local/var/run/nginx.pid
+
